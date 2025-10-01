@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JovGT Soluciones</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Loader de página -->
+  <div class="page-loader">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Barra de progreso -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Botón volver arriba -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <header id="mainHeader">
+    <div class="header-content">
+      <div class="logo">
+        <i class="fas fa-laptop-code"></i>
+        <span>JovGT Soluciones</span>
+      </div>
+      
+      <nav class="nav-menu" id="navMenu">
+        <a href="#services">Servicios</a>
+        <a href="#mobile-services">Móviles</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="header-icons">
+        <div class="chat-icon" onclick="toggleChat()"><i class="fas fa-comments"></i></div>
+        <div class="cart-icon" onclick="toggleCart()">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Transforma tus ideas en experiencias digitales excepcionales</h1>
+      <p class="subtitle">Soluciones técnicas confiables para computadoras y móviles</p>
+      <p>Formateo, instalación de sistemas, reparación de móviles, copias de seguridad y reparaciones con experiencia y rapidez.</p>
+      <div class="hero-buttons">
+        <a href="#services" class="btn btn-primary">Nuestros Servicios</a>
+        <a href="#contact" class="btn btn-secondary">Contactar Ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+      <!-- Sección de productos -->
+      <section class="products" id="services">
+        <h2 class="section-title">Servicios y Productos</h2>
+        <p class="description">Selecciona los servicios que necesites y agrégalos al carrito</p>
+        
+        <div class="search-filters">
+          <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Buscar servicios..." oninput="filterProducts()">
+          </div>
+          <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterCategory('all')">Todos</button>
+            <button class="filter-btn" onclick="filterCategory('software')">Software</button>
+            <button class="filter-btn" onclick="filterCategory('hardware')">Hardware</button>
+            <button class="filter-btn" onclick="filterCategory('mantenimiento')">Mantenimiento</button>
+            <button class="filter-btn" onclick="filterCategory('moviles')">Móviles</button>
+          </div>
+        </div>
+        
+        <div class="products-grid" id="productsGrid">
+          <div class="product-card" data-category="software" data-search="formateo pc sistema operativo drivers">
+            <div class="product-badge">Popular</div>
+            <div class="product-image"><i class="fas fa-desktop"></i></div>
+            <h3>Formateo de PC</h3>
+            <p>Formateo completo de tu computadora con instalación de sistema operativo y drivers</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>(42)</span>
+            </div>
+            <div class="product-price">$25.000</div>
+            <button class="add-to-cart" onclick="addToCart('Formateo de PC', 25000, this)">Agregar al Carrito</button>
+          </div>
+          
+          <div class="product-card" data-category="software" data-search="instalación windows linux macos configuración">
+            <div class="product-image"><i class="fas fa-window-restore"></i></div>
+            <h3>Instalación de Sistema</h3>
+            <p>Instalación de Windows, Linux o macOS con configuración inicial</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <span>(28)</span>
+            </div>
+            <div class="product-price">$20.000</div>
+            <button class="add-to-cart" onclick="addToCart('Instalación de Sistema', 20000, this)">Agregar al Carrito</button>
+          </div>
+          
+          <div class="product-card" data-category="software" data-search="backup respaldo recuperación datos">
+            <div class="product-badge">Nuevo</div>
+            <div class="product-image"><i class="fas fa-hdd"></i></div>
+            <h3>Backup y Recuperación</h3>
+            <p>Respaldo completo de datos y recuperación de información perdida</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>(35)</span>
+            </div>
+            <div class="product-price">$35.000</div>
+            <button class="add-to-cart" onclick="addToCart('Backup y Recuperación', 35000, this)">Agregar al Carrito</button>
+          </div>
+          
+          <div class="product-card" data-category="software" data-search="virus malware eliminación antivirus">
+            <div class="product-image"><i class="fas fa-shield-virus"></i></div>
+            <h3>Eliminación de Virus</h3>
+            <p>Limpieza completa de virus, malware y programas maliciosos</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>(56)</span>
+            </div>
+            <div class="product-price">$30.000</div>
+            <button class="add-to-cart" onclick="addToCart('Eliminación de Virus', 30000, this)">Agregar al Carrito</button>
+          </div>
+          
+          <div class="product-card" data-category="hardware" data-search="cotizaciones hardware componentes">
+            <div class="product-image"><i class="fas fa-microchip"></i></div>
+            <h3>Cotizaciones y cambios de Hardware</h3>
+            <p>Diagnóstico y Cotización de componentes de hardware</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <span>(19)</span>
+            </div>
+            <div class="product-price">$35.000</div>
+            <button class="add-to-cart" onclick="addToCart('Cotizaciones y cambios de Hardware', 35000, this)">Agregar al Carrito</button>
+          </div>
+          
+          <div class="product-card" data-category="mantenimiento" data-search="mantenimiento preventivo limpieza pasta térmica optimización">
+            <div class="product-image"><i class="fas fa-tools"></i></div>
+            <h3>Mantenimiento Preventivo</h3>
+            <p>Limpieza interna, cambio de pasta térmica y optimización</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>(47)</span>
+            </div>
+            <div class="product-price">$30.000</div>
+            <button class="add-to-cart" onclick="addToCart('Mantenimiento Preventivo', 30000, this)">Agregar al Carrito</button>
+          </div>
+          
+          <!-- NUEVOS SERVICIOS PARA MÓVILES -->
+          <div class="product-card" data-category="moviles" data-search="pantalla móvil celular reparación cambio">
+            <div class="product-badge">Popular</div>
+            <div class="product-image"><i class="fas fa-mobile-alt"></i></div>
+            <h3>Cambio de Pantalla Móvil</h3>
+            <p>Reemplazo profesional de pantallas rotas o dañadas en teléfonos móviles</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>(38)</span>
+            </div>
+            <div class="product-price">$45.000</div>
+            <button class="add-to-cart" onclick="addToCart('Cambio de Pantalla Móvil', 45000, this)">Agregar al Carrito</button>
+          </div>
+          
+          <div class="product-card" data-category="moviles" data-search="batería móvil celular carga duración">
+            <div class="product-image"><i class="fas fa-battery-three-quarters"></i></div>
+            <h3>Cambio de Batería</h3>
+            <p>Sustitución de batería agotada o defectuosa para restaurar autonomía</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <span>(29)</span>
+            </div>
+            <div class="product-price">$35.000</div>
+            <button class="add-to-cart" onclick="addToCart('Cambio de Batería Móvil', 35000, this)">Agregar al Carrito</button>
+          </div>
+          
+          <div class="product-card" data-category="moviles" data-search="software móvil actualización formateo">
+            <div class="product-badge">Nuevo</div>
+            <div class="product-image"><i class="fas fa-sync-alt"></i></div>
+            <h3>Actualización de Software Móvil</h3>
+            <p>Actualización del sistema operativo y optimización del rendimiento</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>(24)</span>
+            </div>
+            <div class="product-price">$25.000</div>
+            <button class="add-to-cart" onclick="addToCart('Actualización de Software Móvil', 25000, this)">Agregar al Carrito</button>
+          </div>
+          
+          <div class="product-card" data-category="moviles" data-search="diagnóstico móvil celular revisión">
+            <div class="product-image"><i class="fas fa-search"></i></div>
+            <h3>Diagnóstico Completo Móvil</h3>
+            <p>Análisis exhaustivo para identificar problemas de hardware y software</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>(31)</span>
+            </div>
+            <div class="product-price">$15.000</div>
+            <button class="add-to-cart" onclick="addToCart('Diagnóstico Completo Móvil', 15000, this)">Agregar al Carrito</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Carrito flotante (A LA IZQUIERDA) -->
+      <div class="floating-cart" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <div class="floating-cart-info">
+          <div class="floating-cart-items"><span id="floatingCartCount">0</span> items</div>
+          <div class="floating-cart-total">$<span id="floatingCartTotal">0</span></div>
+        </div>
+      </div>
+
+      <!-- Resto del contenido (slider, formulario, etc.) -->
+      <section class="repair-slider-section">
+        <h2 class="section-title">Reparaciones que realizamos</h2>
+        <div class="slider-wrapper">
+          <div class="slider" id="repairSlider">
+            <div class="slide">
+              <div class="slide-icon"><i class="fas fa-laptop"></i></div>
+              <h3>Cambio de Pantallas</h3>
+              <p>Sustitución de pantallas rotas o dañadas en laptops y PCs. Trabajo garantizado.</p>
+            </div>
+            <div class="slide">
+              <div class="slide-icon"><i class="fas fa-plug"></i></div>
+              <h3>Armado de Equipos</h3>
+              <p>Armado de equipos, con estética y una gran gestión de cableado.</p>
+            </div>
+            <div class="slide">
+              <div class="slide-icon"><i class="fas fa-cogs"></i></div>
+              <h3>Gestor de Software</h3>
+              <p>Gestión de programas para mantención como antivirus y drivers</p>
+            </div>
+            <div class="slide">
+              <div class="slide-icon"><i class="fas fa-hdd"></i></div>
+              <h3>Discos Duros</h3>
+              <p>Recuperación de datos. También instalamos SSD para mayor velocidad.</p>
+            </div>
+            <div class="slide">
+              <div class="slide-icon"><i class="fas fa-fan"></i></div>
+              <h3>Ventilación y Temperatura</h3>
+              <p>Limpieza profunda, cambio de pasta térmica y ventiladores. Evita sobrecalentamientos.</p>
+            </div>
+            <div class="slide">
+              <div class="slide-icon"><i class="fas fa-mobile-alt"></i></div>
+              <h3>Reparación de Móviles</h3>
+              <p>Especialistas en reparación de pantallas, baterías y componentes de smartphones.</p>
+            </div>
+          </div>
+          <div class="slider-controls">
+            <button onclick="moveSlide(-1)">‹</button>
+            <button onclick="moveSlide(1)">›</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Nueva sección para servicios móviles -->
+      <section class="info-section" id="mobile-services">
+        <h2 class="section-title">Servicios Especializados para Móviles</h2>
+        <p class="section-subtitle">Reparamos todas las marcas y modelos de smartphones</p>
+        
+        <div class="services-grid">
+          <div class="service-box">
+            <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h4>Reparación de Pantallas</h4>
+            <p>Cambio profesional de pantallas rotas o dañadas. Usamos repuestos de alta calidad con garantía.</p>
+          </div>
+          <div class="service-box">
+            <div class="service-icon"><i class="fas fa-battery-full"></i></div>
+            <h4>Reemplazo de Baterías</h4>
+            <p>Solucionamos problemas de autonomía con baterías originales o de alta capacidad.</p>
+          </div>
+          <div class="service-box">
+            <div class="service-icon"><i class="fas fa-tools"></i></div>
+            <h4>Reparación de Hardware</h4>
+            <p>Reparamos conectores de carga, botones, cámaras y otros componentes internos.</p>
+          </div>
+          <div class="service-box">
+            <div class="service-icon"><i class="fas fa-sync-alt"></i></div>
+            <h4>Actualización de Software</h4>
+            <p>Optimizamos el rendimiento, actualizamos el sistema y solucionamos problemas de software.</p>
+          </div>
+        </div>
+        
+        <div class="btn-container">
+          <a href="#contact" class="cta-button">Solicitar Diagnóstico Gratuito</a>
+        </div>
+      </section>
+
+      <section class="contact-form-section" id="contact">
+        <h2 class="section-title">Solicita tu diagnóstico gratuito</h2>
+        <p class="section-subtitle">Completa el formulario y nos pondremos en contacto contigo</p>
+        
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nombre completo</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Teléfono</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+              <label for="service">Servicio de interés</label>
+              <select id="service" name="service" required>
+                <option value="">Selecciona un servicio</option>
+                <option value="formateo">Formateo de PC</option>
+                <option value="instalacion">Instalación de Sistema</option>
+                <option value="backup">Backup y Recuperación</option>
+                <option value="virus">Eliminación de Virus</option>
+                <option value="hardware">Cotizaciones de Hardware</option>
+                <option value="mantenimiento">Mantenimiento Preventivo</option>
+                <option value="pantalla-movil">Cambio de Pantalla Móvil</option>
+                <option value="bateria-movil">Cambio de Batería Móvil</option>
+                <option value="software-movil">Actualización de Software Móvil</option>
+                <option value="diagnostico-movil">Diagnóstico Completo Móvil</option>
+                <option value="otro">Otro servicio</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Describe tu problema o solicitud</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn" id="submitBtn">Enviar solicitud</button>
+        </form>
+      </section>
+
+      <section class="info-section">
+        <h2 class="section-title">¿Listo para mejorar tu experiencia digital?</h2>
+        <p class="section-subtitle">Contáctanos a través de cualquiera de nuestros canales</p>
+        
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="icon"><i class="fas fa-envelope"></i></div>
+            <h3>Soporte Técnico Principal</h3>
+            <a href="mailto:jovgtsoluciones@gmail.com">jovgtsoluciones@gmail.com</a>
+            <a href="mailto:jovgtsoluciones@tuto.ia">jovgtsoluciones@tuto.ia</a>
+          </div>
+          <div class="contact-card">
+            <div class="icon"><i class="fas fa-building"></i></div>
+            <h3>Sucursal Centro</h3>
+            <a href="mailto:jovgtsoluciones@gmail.com">jovgtsoluciones@gmail.com</a>
+            <a href="mailto:jovgtsoluciones@tuto.ia">jovgtsoluciones@tuto.ia</a>
+          </div>
+          <div class="contact-card">
+            <div class="icon"><i class="fas fa-home"></i></div>
+            <h3>Servicio a Domicilio</h3>
+            <p>Cobertura en toda la ciudad</p>
+            <a href="mailto:jovgtsoluciones@gmail.com">jovgtsoluciones@gmail.com</a>
+            <a href="mailto:jovgtsoluciones@tuto.ia">jovgtsoluciones@tuto.ia</a>
+          </div>
+          <div class="contact-card">
+            <div class="icon"><i class="fas fa-laptop-house"></i></div>
+            <h3>Atención Remota</h3>
+            <a href="mailto:jovgtsoluciones@gmail.com">jovgtsoluciones@gmail.com</a>
+            <a href="mailto:jovgtsoluciones@tuto.ia">jovgtsoluciones@tuto.ia</a>
+          </div>
+        </div>
+
+        <div class="services-section">
+          <h3 class="services-title">Soluciones Informáticas Expertas</h3>
+          <div class="services-grid">
+            <div class="service-box">
+              <div class="service-icon"><i class="fas fa-compact-disc"></i></div>
+              <h4>Formateo e Instalación</h4>
+              <p>Ofrecemos formateo, instalación de sistemas operativos y soluciones de respaldo de datos para tu tranquilidad.</p>
+            </div>
+            <div class="service-box">
+              <div class="service-icon"><i class="fas fa-tools"></i></div>
+              <h4>Reparación y Mantenimiento</h4>
+              <p>Desde reparaciones de hardware hasta eliminación de virus, nuestros técnicos están listos para resolver cualquier problema.</p>
+            </div>
+            <div class="service-box">
+              <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+              <h4>Reparación de Móviles</h4>
+              <p>Especialistas en reparación de smartphones: pantallas, baterías, software y componentes internos.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Chat widget -->
+  <div class="chat-widget" id="chatWidget">
+    <div class="chat-header">
+      <div class="agent-avatar">🤖</div>
+      <div class="agent-info">
+        <h3>Asistente IA JovGT</h3>
+        <p>Siempre en línea</p>
+      </div>
+      <button class="close-chat" onclick="toggleChat()">&times;</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot-message">
+        <div class="message-avatar bot-avatar">🤖</div>
+        <div class="message-content">
+          <div class="message-bubble">
+            ¡Hola! 👋 Soy tu asistente virtual de JovGT Soluciones. Estoy aquí para ayudarte con cualquier consulta sobre nuestros servicios, precios, horarios o problemas técnicos. ¿En qué puedo asistirte hoy?
+          </div>
+          <div class="quick-replies">
+            <div class="quick-reply" onclick="quickReply('Precios de servicios')">Ver precios</div>
+            <div class="quick-reply" onclick="quickReply('Cómo agendo un servicio')">Agendar servicio</div>
+            <div class="quick-reply" onclick="quickReply('Reparación de móviles')">Móviles</div>
+          </div>
+          <div class="message-time" id="initialMessageTime"></div>
+        </div>
+      </div>
+    </div>
+    <div class="typing-indicator" id="typingIndicator">
+      <div class="typing-dots">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Escribe tu mensaje aquí..." onkeypress="handleKeyPress(event)">
+      <button class="send-button" onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+
+  <button class="chat-toggle" id="chatToggle" onclick="toggleChat()"><i class="fas fa-comments"></i></button>
+
+  <!-- Cart modal -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h2>Tu Carrito</h2>
+        <button class="close-cart" onclick="toggleCart()">&times;</button>
+      </div>
+      <div id="cartItems">
+        <div class="empty-cart">
+          <p>Tu carrito está vacío</p>
+        </div>
+      </div>
+      <div class="cart-total" id="cartTotal" style="display: none;">
+        <h3>Total: $<span id="totalAmount">0</span></h3>
+        <button class="checkout-button" onclick="initiateCheckout()">Proceder al Pago</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de confirmación de pago (NUEVO) -->
+  <div class="checkout-modal" id="checkoutModal">
+    <div class="checkout-container">
+      <div class="checkout-header">
+        <div class="checkout-icon">
+          <i class="fas fa-file-invoice-dollar"></i>
+        </div>
+        <h2>Confirmación de Cotización</h2>
+        <p>Estás a un paso de completar tu solicitud</p>
+      </div>
+      
+      <div class="checkout-form-container">
+        <div class="checkout-form-group">
+          <label for="checkout-email">Correo Electrónico</label>
+          <div class="checkout-input-with-icon">
+            <div class="checkout-input-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <input type="email" id="checkout-email" placeholder="Ingresa tu correo electrónico" required>
+          </div>
+        </div>
+        
+        <div class="checkout-benefits">
+          <h3><i class="fas fa-star"></i> Ingresa tu email para tu cotizacion</h3>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Recibirás tu cotización via correo</li>
+            <li><i class="fas fa-check-circle"></i> La Respuesta sera dentro del las primeras 24/48 Horas</li>
+            <li><i class="fas fa-check-circle"></i> Trabajo Garantizado con garantia previa entrega</li>
+          </ul>
+        </div>
+        
+        <div class="checkout-button-group">
+          <button class="checkout-btn checkout-btn-accept" id="checkoutAccept">
+            <i class="fas fa-check"></i>
+            Aceptar
+          </button>
+          <button class="checkout-btn checkout-btn-cancel" id="checkoutCancel">
+            <i class="fas fa-times"></i>
+            Cancelar
+          </button>
+        </div>
+        
+        <div class="checkout-secure-notice">
+          <i class="fas fa-shield-alt"></i>
+          Tus datos están protegidos y no serán compartidos con nadie!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="notification" class="notification"></div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="#">Compañía</a>
+        <a href="#">Acerca de Nosotros</a>
+        <a href="#">Carreras</a>
+        <a href="#">Blog</a>
+        <a href="#">Soporte</a>
+        <a href="#">FAQ</a>
+        <a href="#">Contacto</a>
+        <a href="#">Política de Privacidad</a>
+      </div>
+      <p class="copyright">COPYRIGHT © 2025 JovGT Soluciones. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/forms.js"></script>
+</body>
+</html>
